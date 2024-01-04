@@ -1,173 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 40px 0;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        h2 {
-            margin-bottom: 30px;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #343a40;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #343a40;
-        }
-
-        .bg-secondary {
-            background-color: #f0f0f0;
-        }
-
-        .card {
-            border: none;
-        }
-
-        .card-header {
-            background-color: #343a40;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background-color: #343a40;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <div class="container">
-            <h1>Personal Portfolio</h1>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<title>Three</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+        <canvas class="webgl"></canvas>
+        <div>
+            <h1>Hello!</h1>
+            <h2>My name is Rajat.</h2>
+            <h3>I love Three.JS.</h3>
         </div>
-    </header>
-
-    <main class="container">
-        <section id="personal-information">
-            <h2>Personal Information</h2>
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Name: Your Name</li>
-                    <li class="list-group-item">Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-                    <li class="list-group-item">Location: Istanbul, Turkey</li>
-                    <li class="list-group-item">LinkedIn: <a href="https://www.linkedin.com/yourprofile" target="_blank">Your LinkedIn Profile</a></li>
-                    <li class="list-group-item">GitHub: <a href="https://github.com/UgurkanTech" target="_blank">Your GitHub Profile</a></li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="about-me">
-            <h2>About Me</h2>
-            <p>
-                Hey there! I'm a passionate computer engineering graduate with an insatiable curiosity for game
-                development, orbital physics, and rocket science. Proficient in software development, computer hardware,
-                and electronics, I'm on a mission to blend technology and creativity in innovative ways.
-            </p>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <div class="card">
-                <div class="card-body">
-                    <h3>Istanbul Bilgi University (2018-2023)</h3>
-                    <p><strong>Bachelor of Science in Computer Engineering</strong></p>
-                    <p><strong>GPA:</strong> 3.26/4.00</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Languages</h3>
-                    <ul>
-                        <li>English (B2)</li>
-                        <li>Turkish (Native)</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <div class="card bg-secondary">
-                        <div class="card-header">Knowledge / Soft Skills</div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Software Development</li>
-                            <li class="list-group-item">Project Management</li>
-                            <!-- Add other soft skills here -->
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card bg-secondary">
-                        <div class="card-header">Tools & Technologies</div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">MS Office</li>
-                            <li class="list-group-item">Visual Studio</li>
-                            <!-- Add other tools and technologies here -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="hobbies">
-            <h2>Hobbies</h2>
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Programming & Developing software technologies.</li>
-                    <li class="list-group-item">Designing logic circuits in Logisim & Making real hobby circuits.</li>
-                    <li class="list-group-item">Making music. (Guitar, Piano, FL-Studio)</li>
-                    <li class="list-group-item">Using airplanes in flight simulator. (Airbus A320)</li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Your Name</p>
-        </div>
-    </footer>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-</body>
-
+         <!-- CDN Link to Three.js -->
+        <script type="module" src="./index.js"></script>
+	</body>
 </html>
