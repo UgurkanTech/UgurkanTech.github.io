@@ -1,64 +1,95 @@
-import {OrbitControls} from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js';
 import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
-const canvas = document.querySelector('canvas.webgl')
 
-// Scene
+const canvas = document.querySelector('canvas.webgl');
+
 let camera, scene, renderer;
-			let mesh;
+let uniforms, material;
 
-			init();
-			animate();
 
-			function init() {
+let mouse = new THREE.Vector2();
 
-				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 100 );
-				camera.position.z = 2;
+document.addEventListener( 'mousemove', onDocumentMouseMove );
+function onDocumentMouseMove( event ) {
 
-				scene = new THREE.Scene();
+	event.preventDefault();
 
-				const texture = new THREE.TextureLoader().load( 'static/crate.gif' );
-				texture.colorSpace = THREE.SRGBColorSpace;
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-				const geometry = new THREE.BoxGeometry();
-				const material = new THREE.MeshBasicMaterial( { map: texture } );
+}
 
-				mesh = new THREE.Mesh( geometry, material );
-				scene.add( mesh );
+init();
+animate();
 
-				
 
-				renderer = new THREE.WebGLRenderer({
-					antialias: true,
-					canvas: canvas,
-					alpha: true,
-				})
+function loadShader(url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                callback(xhr.responseText);
+            } else {
+                console.error('Failed to load shader:', url);
+            }
+        }
+    };
+    xhr.open('GET', url, true);
+    xhr.send();
+}
 
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				document.body.appendChild( renderer.domElement );
 
-				//
+function init() {
+    camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.z = 1;
 
-				window.addEventListener( 'resize', onWindowResize );
+    scene = new THREE.Scene();
 
-			}
+    const geometry = new THREE.PlaneGeometry(2, 2);
 
-			function onWindowResize() {
 
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
+    uniforms = {
+        time: { value: 0 },
+        resolution: { value: new THREE.Vector2() },
+		mouse: { value: new THREE.Vector2() },
+    };
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
+    // Load shaders
+    material = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: vs,
+        fragmentShader: fs,
+    });
+    
+    
 
-			}
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-			function animate() {
+    renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        canvas: canvas,
+        alpha: true,
+    });
 
-				requestAnimationFrame( animate );
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-				mesh.rotation.x += 0.005;
-				mesh.rotation.y += 0.01;
+    window.addEventListener('resize', onWindowResize);
 
-				renderer.render( scene, camera );
+	onWindowResize();
+}
 
-			}
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    uniforms.time.value += 0.05;
+	uniforms.mouse.value.set(mouse.x, mouse.y);
+    renderer.render(scene, camera);
+}
