@@ -9,49 +9,90 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            padding-top: 50px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
         }
 
         section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .bg-secondary {
+            background-color: #f0f0f0;
+        }
+
+        .card {
+            border: none;
+        }
+
+        .card-header {
+            background-color: #343a40;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
         }
     </style>
 </head>
 
 <body>
-    <header class="bg-dark fixed-top">
-        <div class="container text-white py-3">
+    <header>
+        <div class="container">
             <h1>Personal Portfolio</h1>
         </div>
     </header>
 
-    <main class="container mt-5 pt-4">
+    <main class="container">
         <section id="personal-information">
             <h2>Personal Information</h2>
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <th>Name</th>
-                        <td>Your Name</td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td><a href="mailto:your.email@example.com">your.email@example.com</a></td>
-                    </tr>
-                    <tr>
-                        <th>Location</th>
-                        <td>Istanbul, Turkey</td>
-                    </tr>
-                    <tr>
-                        <th>LinkedIn</th>
-                        <td><a href="https://www.linkedin.com/yourprofile" target="_blank">Your LinkedIn Profile</a></td>
-                    </tr>
-                    <tr>
-                        <th>GitHub</th>
-                        <td><a href="https://github.com/UgurkanTech" target="_blank">Your GitHub Profile</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: Your Name</li>
+                    <li class="list-group-item">Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+                    <li class="list-group-item">Location: Istanbul, Turkey</li>
+                    <li class="list-group-item">LinkedIn: <a href="https://www.linkedin.com/yourprofile" target="_blank">Your LinkedIn Profile</a></li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/UgurkanTech" target="_blank">Your GitHub Profile</a></li>
+                </ul>
+            </div>
         </section>
 
         <section id="about-me">
@@ -65,8 +106,8 @@
 
         <section id="education">
             <h2>Education</h2>
-            <div class="row">
-                <div class="col">
+            <div class="card">
+                <div class="card-body">
                     <h3>Istanbul Bilgi University (2018-2023)</h3>
                     <p><strong>Bachelor of Science in Computer Engineering</strong></p>
                     <p><strong>GPA:</strong> 3.26/4.00</p>
@@ -85,40 +126,42 @@
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <h3>Knowledge / Soft Skills</h3>
-                    <ul>
-                        <li>Software Development</li>
-                        <li>Project Management</li>
-                        <!-- Add other soft skills here -->
-                    </ul>
+                    <div class="card bg-secondary">
+                        <div class="card-header">Knowledge / Soft Skills</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Software Development</li>
+                            <li class="list-group-item">Project Management</li>
+                            <!-- Add other soft skills here -->
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <h3>Tools & Technologies</h3>
-                    <ul>
-                        <li>MS Office</li>
-                        <li>Visual Studio</li>
-                        <!-- Add other tools and technologies here -->
-                    </ul>
+                    <div class="card bg-secondary">
+                        <div class="card-header">Tools & Technologies</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">MS Office</li>
+                            <li class="list-group-item">Visual Studio</li>
+                            <!-- Add other tools and technologies here -->
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="hobbies">
             <h2>Hobbies</h2>
-            <div class="row">
-                <div class="col">
-                    <ul>
-                        <li>Programming & Developing software technologies.</li>
-                        <li>Designing logic circuits in Logisim & Making real hobby circuits.</li>
-                        <li>Making music. (Guitar, Piano, FL-Studio)</li>
-                        <li>Using airplanes in flight simulator. (Airbus A320)</li>
-                    </ul>
-                </div>
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Programming & Developing software technologies.</li>
+                    <li class="list-group-item">Designing logic circuits in Logisim & Making real hobby circuits.</li>
+                    <li class="list-group-item">Making music. (Guitar, Piano, FL-Studio)</li>
+                    <li class="list-group-item">Using airplanes in flight simulator. (Airbus A320)</li>
+                </ul>
             </div>
         </section>
     </main>
 
-    <footer class="bg-dark text-white text-center py-3">
+    <footer>
         <div class="container">
             <p>&copy; 2024 Your Name</p>
         </div>
