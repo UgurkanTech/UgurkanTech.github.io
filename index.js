@@ -3,77 +3,55 @@ import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
 const canvas = document.querySelector('canvas.webgl')
 
 // Scene
-const scene = new THREE.Scene()
+let camera, scene, renderer;
+			let mesh;
 
-const textureLoader = new THREE.TextureLoader()
-const myTexture = textureLoader.load('coolTex.jpg')
+			init();
+			animate();
 
-// Object
-const geometry = new THREE.BoxGeometry(1,1,1)
-const geometry2 = new THREE.DodecahedronGeometry(0.5,3)
-const material = new THREE.MeshBasicMaterial({
-    map: myTexture
-})
-const boxMesh = new THREE.Mesh(geometry,material)
-const sphereMesh = new THREE.Mesh(geometry2,material)
-scene.add(boxMesh)
-// scene.add(sphereMesh)
-boxMesh.position.x = 0
-boxMesh.position.y = 0.8
-sphereMesh.position.x = -1.6
-sphereMesh.position.y = 0.5
-geometry.center()
-// Sizes
-const sizes = {
-    width:window.innerWidth,
-    height:window.innerHeight
-}
+			function init() {
 
-// Renderer gets updated each time window is resized
-window.addEventListener('resize',()=>{
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 100 );
+				camera.position.z = 2;
 
-    camera.aspect = sizes.width/sizes.height
-    camera.updateProjectionMatrix()
+				scene = new THREE.Scene();
 
-    renderer.setSize(sizes.width,sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2))
-    
-})
+				const texture = new THREE.TextureLoader().load( 'textures/crate.gif' );
+				texture.colorSpace = THREE.SRGBColorSpace;
 
-// Camera
-const camera = new THREE.PerspectiveCamera(75,sizes.width/sizes.height,0.1,100)
-camera.position.z = 3
-scene.add(camera)
+				const geometry = new THREE.BoxGeometry();
+				const material = new THREE.MeshBasicMaterial( { map: texture } );
 
-// Controls
-const controls = new OrbitControls(camera, canvas)
+				mesh = new THREE.Mesh( geometry, material );
+				scene.add( mesh );
 
-controls.enableZoom = false;
-controls.enableDamping = true
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
 
-const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    alpha: true,
-})
-renderer.setSize(sizes.width,sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2))
+				//
 
-const clock = new THREE.Clock()
+				window.addEventListener( 'resize', onWindowResize );
 
-const tick = () => {
-    const elapsedTime = clock.getElapsedTime()
-    boxMesh.rotateX(30*0.0003)
-    boxMesh.rotateY(30*0.0003)
-    sphereMesh.rotateY(30*0.0003)
-    // mesh.position.y = Math.sin(elapsedTime) *0.1
-    boxMesh.position.z = Math.sin(elapsedTime) * 1
+			}
 
-    controls.update()
-    controls.enableDamping = true
-    renderer.render(scene,camera)
-    window.requestAnimationFrame(tick)
-};
+			function onWindowResize() {
 
-tick()
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				mesh.rotation.x += 0.005;
+				mesh.rotation.y += 0.01;
+
+				renderer.render( scene, camera );
+
+			}
