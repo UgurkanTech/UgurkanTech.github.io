@@ -16,7 +16,7 @@ let camera, scene, renderer;
 
 				scene = new THREE.Scene();
 
-				const texture = new THREE.TextureLoader().load( 'textures/crate.gif' );
+				const texture = new THREE.TextureLoader().load( 'static/crate.gif' );
 				texture.colorSpace = THREE.SRGBColorSpace;
 
 				const geometry = new THREE.BoxGeometry();
