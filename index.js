@@ -95,6 +95,6 @@ function animate() {
     requestAnimationFrame(animate);
 
     uniforms.time.value += 0.05;
-	uniforms.mouse.value.set(mouse.x, mouse.y);
+	//uniforms.mouse.value.set(mouse.x, mouse.y);
     renderer.render(scene, camera);
 }
