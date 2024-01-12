@@ -1,5 +1,5 @@
+"use strict";
 import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
-
 const canvas = document.querySelector('canvas.webgl');
 
 let camera, scene, renderer;
@@ -8,37 +8,77 @@ let uniforms, material;
 
 let mouse = new THREE.Vector2();
 
-document.addEventListener( 'mousemove', onDocumentMouseMove );
-function onDocumentMouseMove( event ) {
+document.addEventListener('mousemove', onDocumentMouseMove, { passive: true });
+document.addEventListener('touchstart', onDocumentTouchStart, { passive: true });
+document.addEventListener('touchmove', onDocumentTouchMove, { passive: true });
+document.addEventListener('wheel', onMouseScroll, { passive: true });
 
-	event.preventDefault();
 
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
+
+function onMouseScroll(event) {
+    velocity.y += event.deltaY * 0.0003;
+}
+
+let lastMouse = { x: 0, y: 0 };
+
+function onDocumentMouseMove(event) {
+    let mouseX = -(event.clientX / window.innerWidth) * 2 - 1;
+    let mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    if (lastMouse) {
+        let deltaX = mouseX - lastMouse.x;
+        let deltaY = mouseY - lastMouse.y;
+
+        velocity.x = deltaX;
+        velocity.y = deltaY;
+    }
+
+    lastMouse = { x: mouseX, y: mouseY };
+
+}
+
+let lastTouch = null;
+let velocity = { x: 0, y: 0 };
+let friction = 0.95;
+
+function onDocumentTouchStart(event) {
+    lastTouch = {
+        x: -(event.touches[0].clientX / window.innerWidth) * 2 - 1,
+        y: -(event.touches[0].clientY / window.innerHeight) * 2 + 1
+    };
+
+    velocity = { x: 0, y: 0 };
+}
+
+function onDocumentTouchMove(event) {
+    if (lastTouch) {
+        let touchX = -(event.touches[0].clientX / window.innerWidth) * 2 - 1;
+        let touchY = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
+
+        let deltaX = touchX - lastTouch.x;
+        let deltaY = touchY - lastTouch.y;
+
+        velocity.x = deltaX;
+        velocity.y = deltaY;
+
+        lastTouch = { x: touchX, y: touchY };
+    }
+}
+
+function onDocumentTouchEnd() {
+    lastTouch = null;
 }
 
 init();
 animate();
 
 
-function loadShader(url, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                callback(xhr.responseText);
-            } else {
-                console.error('Failed to load shader:', url);
-            }
-        }
-    };
-    xhr.open('GET', url, true);
-    xhr.send();
-}
+
 
 
 var scale;
+var mobile;
 
 function init() {
     camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -60,6 +100,8 @@ function init() {
         uniforms: uniforms,
         vertexShader: vs,
         fragmentShader: fs,
+        glslVersion: THREE.GLSL1,
+        
     });
     
     
@@ -73,7 +115,9 @@ function init() {
         alpha: true,
     });
 
-    scale = 0.1;
+
+    mobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    scale = mobile ? 0.75 : 1;
     renderer.setSize( window.innerWidth * scale, window.innerHeight * scale );
 
     window.addEventListener('resize', onWindowResize);
@@ -92,9 +136,27 @@ function onWindowResize() {
 }
 
 function animate() {
-    requestAnimationFrame(animate);
+    setTimeout( function() {
 
-    uniforms.time.value += 0.05;
-	//uniforms.mouse.value.set(mouse.x, mouse.y);
+        requestAnimationFrame( animate );
+
+    }, 1000 / 60 );
+
+    
+    // apply velocity to mouse position
+    mouse.x += velocity.x;
+    mouse.y += velocity.y;
+
+    // reduce velocity for next frame
+    velocity.x *= friction;
+    velocity.y *= friction;
+
+    if (Math.abs(velocity.x) < 0.001) velocity.x = 0;
+    if (Math.abs(velocity.y) < 0.001) velocity.y = 0;
+    
+
+    uniforms.time.value += 0.015;
+	uniforms.mouse.value.set(mouse.x, mouse.y);
     renderer.render(scene, camera);
+
 }
