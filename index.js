@@ -1,4 +1,3 @@
-import { OrbitControls } from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js';
 import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
 
 const canvas = document.querySelector('canvas.webgl');
@@ -39,6 +38,8 @@ function loadShader(url, callback) {
 }
 
 
+var scale;
+
 function init() {
     camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.z = 1;
@@ -72,7 +73,13 @@ function init() {
         alpha: true,
     });
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    // Check if the user is on a mobile device
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // If the user is on a mobile device, set the scale to 0.5, otherwise set it to 1
+    var scale = isMobile ? 0.1 : 1;
+
+    renderer.setSize( window.innerWidth * scale, window.innerHeight * scale );
 
     window.addEventListener('resize', onWindowResize);
 
@@ -82,8 +89,11 @@ function init() {
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+    renderer.setSize( window.innerWidth * scale, window.innerHeight * scale );
+    uniforms.resolution.value.x = renderer.domElement.width;
+    uniforms.resolution.value.y = renderer.domElement.height;
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
 }
 
 function animate() {
