@@ -73,12 +73,7 @@ function init() {
         alpha: true,
     });
 
-    // Check if the user is on a mobile device
-    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    // If the user is on a mobile device, set the scale to 0.5, otherwise set it to 1
-    var scale = isMobile ? 0.1 : 1;
-
+    scale = 0.1;
     renderer.setSize( window.innerWidth * scale, window.innerHeight * scale );
 
     window.addEventListener('resize', onWindowResize);
