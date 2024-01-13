@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head id="head">
   <title>UgurkanTech</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="static/w3.css">
+  <link rel='stylesheet' href='static/roboto.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
   <style>
-    html,
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    html, body, h1, h2, h3, h4, h5, h6 {
       font-family: "Roboto", sans-serif
     }
   </style>
 </head>
-
 <body class="w3-dark-grey">
   <canvas class="webgl" style="z-index: -1;"></canvas>
   <!-- Page Container -->
   <div class="w3-content w3-margin-top" style="max-width:1400px; opacity: 70%;">
-
     <!-- The Menu -->
     <div id="menu"></div>
     <!-- The Grid -->
     <div class="w3-row-padding">
-
       <!-- Left Column -->
       <div class="w3-quarter">
 
         <div class="w3-white w3-text-grey w3-card-4">
           <div class="w3-display-container">
-            <img src="me.png" style="width:100%;" alt="Avatar">
+            <img src="static/me.png" style="width:100%;" alt="Avatar">
             <div class="w3-display-bottomleft w3-container w3-text-white">
               <h2>Uğurkan Hoşgör</h2>
             </div>
@@ -48,78 +38,58 @@
           <div class="w3-container">
             <div id="info"></div>
             <hr>
-
             <!-- Languages section -->
             <div id="languages"></div>
-
-
             <!-- Hobbies section-->
             <div id="hobbies"></div>
             <br>
-
-
-
             <br>
           </div>
         </div><br>
-
         <!-- End Left Column -->
       </div>
-
       <!-- Right Column -->
       <div class="w3-threequarter">
-
-
-
         <!-- Education section -->
-        <div class="w3-container w3-card w3-white">
-          <h2 class="w3-text-grey w3-padding-16"><i
-              class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-          <hr>
-          <div class="w3-container">
-            <h5 class="w3-opacity"><b>Istanbul Bilgi University</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2018 - 2023</h6>
-            <p> Bachelor of Science in Computer Engineering (GPA 3.26)</p><br>
-          </div>
-        </div>
+        <div id="education"></div>
         <br>
         <!-- Skills section-->
         <div id="skills"></div>
         <br>
-
         <!-- Experiences section -->
         <div id="works"></div>
         <br>
+
+        <div id="tools"></div>
+        <br>
         <!-- End Right Column -->
       </div>
-
       <!-- End Grid -->
     </div>
-
-    <!-- End Page Container -->
+    <!-- End Page Container -->         
   </div>
-
   <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
   <div id="footer"></div>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="static/jquery.min.js"></script>
   <script>
     $(function () {
-      $("#menu").load("menu.html");
-      $("#info").load("info.html");
-      $("#languages").load("languages.html");
-      $("#skills").load("skills.html");
-      $("#hobbies").load("hobbies.html");
-      $("#works").load("works.html");
-      $("#footer").load("footer.html");
+      $("#menu").load("content/menu.html");
+      $("#info").load("content/info.html");
+      $("#languages").load("content/languages.html");
+      $("#skills").load("content/skills.html");
+      $("#education").load("content/education.html");
+      $("#hobbies").load("content/hobbies.html");
+      $("#works").load("content/works.html");
+      $("#tools").load("content/tools.html");
+      $("#footer").load("content/footer.html");
     });
   </script>
-
   <!-- CDN Link to Three.js -->
-  <script src="shader.vs"></script>
-  <script src="shader.fs"></script>
-  <script type="module" src="./index.js"></script>
+  <script src="./static/shader.vs"></script>
+  <script src="./static/shader.fs"></script>
+  <script type="module" src="./static/background.js"></script>
 </body>
 
 </html>

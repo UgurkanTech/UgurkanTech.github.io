@@ -5,20 +5,13 @@
   <title>UgurkanTech</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="static/w3.css">
+  <link rel='stylesheet' href='static/roboto.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
   <style>
-    html,
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    html, body, h1, h2, h3, h4, h5, h6 {
       font-family: "Roboto", sans-serif
     }
   </style>
@@ -39,7 +32,7 @@
 
         <div class="w3-white w3-text-grey w3-card-4">
           <div class="w3-display-container">
-            <img src="me.png" style="width:100%;" alt="Avatar">
+            <img src="static/me.png" style="width:100%;" alt="Avatar">
             <div class="w3-display-bottomleft w3-container w3-text-white">
               <h2>Uğurkan Hoşgör</h2>
             </div>
@@ -61,9 +54,16 @@
       <div class="w3-threequarter">
 
         <!-- projects section -->
-        <div id="projects_content"></div>
-        <br>
+        <div class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-coffee fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Projects</h2>
 
+        </div>
+        <br>
+        <div id="projects_1"></div>
+        <br>
+        <div id="projects_2"></div>
+        <br>
+        <div id="projects_3"></div>
         <br>
         <!-- End Right Column -->
       </div>
@@ -76,20 +76,22 @@
   <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
   <div id="footer"></div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="static/jquery.min.js"></script>
   <script>
     $(function () {
-      $("#menu").load("menu.html");
-      $("#info").load("info.html");
-      $("#footer").load("footer.html");
-      $("#projects_content").load("projects_content.html");
+      $("#menu").load("content/menu.html");
+      $("#info").load("content/info.html");
+      $("#footer").load("content/footer.html");
+      $("#projects_1").load("content/projects/1.html");
+      $("#projects_2").load("content/projects/2.html");
+      $("#projects_3").load("content/projects/3.html");
     });
   </script>
 
   <!-- CDN Link to Three.js -->
-  <script src="shader.vs"></script>
-  <script src="shader.fs"></script>
-  <script type="module" src="./index.js"></script>
+  <script src="./static/shader.vs"></script>
+  <script src="./static/shader.fs"></script>
+  <script type="module" src="./static/background.js"></script>
 </body>
 
 </html>

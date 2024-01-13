@@ -1,5 +1,5 @@
 "use strict";
-import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
+import * as THREE from './three.module.js';
 const canvas = document.querySelector('canvas.webgl');
 
 let camera, scene, renderer;
@@ -160,3 +160,4 @@ function animate() {
     renderer.render(scene, camera);
 
 }
+//Written by -Ugurkan Hosgor
