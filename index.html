@@ -1,283 +1,125 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>UgurkanTech</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
-    <style>
-    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-    </style>
-  </head>
+
+<head>
+  <title>UgurkanTech</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif
+    }
+  </style>
+</head>
+
 <body class="w3-dark-grey">
-  <canvas class="webgl" style="z-index: -1;"></canvas>	 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px; opacity: 70%;">
+  <canvas class="webgl" style="z-index: -1;"></canvas>
+  <!-- Page Container -->
+  <div class="w3-content w3-margin-top" style="max-width:1400px; opacity: 70%;">
 
-<!-- The Menu -->
-<div class="w3-container">
-    <div class="w3-container w3-card w3-white w3-margin-bottom ">
-        
-        <div class="card-body w3-text-grey w3-padding-16 w3-center" style="border: 1;">
-                <a href="index.html" class="w3-btn w3-margin-right w3-xlarge w3-text-teal btn-lg mr-3 mb-3">Home</a>
-                <a href="projects.html" class="w3-btn w3-margin-right w3-xlarge w3-text-teal btn-lg mr-3 mb-3">Projects</a>
-                <a href="https://github.com/UgurkanTech" class="w3-btn w3-margin-right w3-xlarge w3-text-teal btn-lg mb-3" target="_blank">GitHub</a>
-            </div>
-      </div>
-</div>
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-quarter" >
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="me.png" style="width:100%;" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-white">
-            <h2>Uğurkan Hoşgör</h2>
-          </div>
-        </div>
-        <!-- Info section -->
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Computer Engineer</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Istanbul, TR</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ugurkanstr@gmail.com</p>
-          <!-- <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p> -->
-          <hr>
+    <!-- The Menu -->
+    <div id="menu"></div>
+    <!-- The Grid -->
+    <div class="w3-row-padding">
 
-          <!-- Languages section -->
-          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-          <p>English</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:80%">
-              <div class="w3-center w3-text-white" style="font-size:x-small;">B2</div>
+      <!-- Left Column -->
+      <div class="w3-quarter">
+
+        <div class="w3-white w3-text-grey w3-card-4">
+          <div class="w3-display-container">
+            <img src="me.png" style="width:100%;" alt="Avatar">
+            <div class="w3-display-bottomleft w3-container w3-text-white">
+              <h2>Uğurkan Hoşgör</h2>
             </div>
           </div>
-          <p>Turkish</p>
-          <div class="w3-light-grey w3-center w3-round-xlarge">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:95%">
-              <div class="w3-center w3-text-white" style="font-size:x-small;">Native</div>
-            </div>
-          </div>
-          <p>German</p>
-          <div class="w3-light-grey w3-center w3-round-xlarge">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:10%">
-              <div class="w3-center w3-text-white" style="font-size:x-small; margin-left: -5px;">A1</div>
-            </div>
-          </div>
-
-          <!-- Hobbies section-->
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Hobbies</b></p>
-          <div class="w3-table">
-          <p>Programming & Developing software technologies.</p>
-          <div class="w3-light-grey w3-center w3-round-xlarge">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:95%">
-              <div class="w3-center w3-text-white" style="font-size:x-small; margin-left: -5px;">Mostly</div>
-            </div>
-          </div>
-          <p>Designing logic circuits in Logisim & Making real hobby circuits.</p>
-          <div class="w3-light-grey w3-center w3-round-xlarge">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:80%">
-              <div class="w3-center w3-text-white" style="font-size:x-small; margin-left: -5px;">Weekly</div>
-            </div>
-          </div>
-          <p>Making music. (Guitar, Piano, FL-Studio)</p>
-          <div class="w3-light-grey w3-center w3-round-xlarge">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:55%">
-              <div class="w3-center w3-text-white" style="font-size:x-small; margin-left: -5px;">Biweekly</div>
-            </div>
-          </div>
-          <p>Using airplanes in flight simulator. (Airbus A320)</p>
-          <div class="w3-light-grey w3-center w3-round-xlarge">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:40%">
-              <div class="w3-center w3-text-white" style="font-size:x-small; margin-left: -5px;">Monthly</div>
-            </div>
-          </div>  
-        </div>
-          <br>
-
-          
-
-          <br>
-        </div>
-      </div><br>
-  
-    <!-- End Left Column -->
-    </div>
-
-    <!-- Right Column -->
-    <div class="w3-threequarter">
-    
-      
-
-      <!-- Education section -->
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-        <hr>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Istanbul Bilgi University</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2018 - 2023</h6>
-          <p> Bachelor of Science in Computer Engineering (GPA 3.26)</p><br>
-        </div>
-      </div>
-      <br>
-       <!-- Skills section-->
-       <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Skills</h2>
-                  
-
-        <div class="w3-row-padding">
-          <div class="w3-half" >
-            <p>Leadership & Project management</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:95%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">95%</div>
-              </div>
-            </div>
-
-            <p>Game Engine Development</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:85%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">85%</div>
-              </div>
-            </div>
-            <p>Algorithms & Code optimizations</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:80%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">80%</div>
-              </div>
-            </div>
-            <p>Computer Hardware</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:95%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">95%</div>
-              </div>
-            </div>
-            <p>Robotics & Electronics</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:85%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">85%</div>
-              </div>
-            </div>
-            <p>Procedural 3D Meshes & Perlin Noise</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:75%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">75%</div>
-              </div>
-            </div>
-            <p>Web Frontend</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:40%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">40%</div>
-              </div>
-            </div>
-          </div>
-          <div class="w3-half" >
-            
-            <p>OpenGL & Shaders</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:90%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">90%</div>
-              </div>
-            </div>
-            <p>Backend & Webservices</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:55%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">55%</div>
-              </div>
-            </div>
-            <p>OOP & Advanced programming</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:85%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">85%</div>
-              </div>
-            </div>
-            <p>Multi-threaded programming</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:70%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">70%</div>
-              </div>
-            </div>
-            <p>Network & Socket programming</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:75%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">75%</div>
-              </div>
-            </div>
-            <p>Java, C#, C++, Python, SQL</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:90%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">90%</div>
-              </div>
-            </div>
-            <p>AI, Machine & Deep learning</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="height: 15px; width:60%">
-                <div class="w3-center w3-text-white" style="font-size:x-small;">60%</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-                  
-                  
-
-
-
-
-
-                  <br>
-      </div>
-      <br>
-
-          <!-- Experiences section -->
-          <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+          <!-- Info section -->
+          <div class="w3-container">
+            <div id="info"></div>
             <hr>
-            <div class="w3-container">
-              <h5 class="w3-opacity"><b>Intern / ServisSoft</b></h5>
-              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2023 - Sep 2023</h6>
-              <p>Improved backend development, devops and cyber security skills.</p><br>
-            </div>
-            
-            <div class="w3-container">
-              <h5 class="w3-opacity"><b>Intern / Method Yazılım</b></h5>
-              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2023 - Feb 2023</h6>
-              <p>Reviewed financial software solutions and project management.</p>
-              <br>
-            </div>
-            
+
+            <!-- Languages section -->
+            <div id="languages"></div>
+
+
+            <!-- Hobbies section-->
+            <div id="hobbies"></div>
+            <br>
+
+
+
+            <br>
           </div>
-          <br>
-    <!-- End Right Column -->
+        </div><br>
+
+        <!-- End Left Column -->
+      </div>
+
+      <!-- Right Column -->
+      <div class="w3-threequarter">
+
+
+
+        <!-- Education section -->
+        <div class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i
+              class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+          <hr>
+          <div class="w3-container">
+            <h5 class="w3-opacity"><b>Istanbul Bilgi University</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2018 - 2023</h6>
+            <p> Bachelor of Science in Computer Engineering (GPA 3.26)</p><br>
+          </div>
+        </div>
+        <br>
+        <!-- Skills section-->
+        <div id="skills"></div>
+        <br>
+
+        <!-- Experiences section -->
+        <div id="works"></div>
+        <br>
+        <!-- End Right Column -->
+      </div>
+
+      <!-- End Grid -->
     </div>
-    
-  <!-- End Grid -->
+
+    <!-- End Page Container -->
   </div>
-  
-  <!-- End Page Container -->
-</div>
 
-<!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
-<div class="w3-container">
-  <footer class="w3-container w3-teal w3-center w3-margin-top" style="opacity: 70%;">
-    <p>Find me on social media.</p>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-small">This website was made with W3schools Spaces.</p>
- </footer>
-</div>
+  <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
+  <div id="footer"></div>
 
-<!-- CDN Link to Three.js -->
-<script src="shader.vs"></script>
-<script src="shader.fs"></script>
-<script type="module" src="./index.js"></script> 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $("#menu").load("menu.html");
+      $("#info").load("info.html");
+      $("#languages").load("languages.html");
+      $("#skills").load("skills.html");
+      $("#hobbies").load("hobbies.html");
+      $("#works").load("works.html");
+      $("#footer").load("footer.html");
+    });
+  </script>
+
+  <!-- CDN Link to Three.js -->
+  <script src="shader.vs"></script>
+  <script src="shader.fs"></script>
+  <script type="module" src="./index.js"></script>
 </body>
 
 </html>
